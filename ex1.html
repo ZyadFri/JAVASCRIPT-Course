@@ -3,13 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exercice1</title>
+    <title>Calcul de somme</title>
 </head>
 <body>
-    <script>
-        var userInput = prompt("Veuillez entrer une chaîne de caractères :");
+    <div>
+        <label >Nombre 1:</label>
+        <input type="number" id="nombre1">
+    </div>
+    <div>
+        <label >Nombre 2:</label>
+        <input type="number" id="nombre2">
+    </div>
+    <button onclick="calculerSomme()">Calculer</button>
+    <p id="resultat"></p>
 
-        document.write("<p>Vous avez saisi : " + userInput + "</p>");
+    <script>
+        function calculerSomme() {
+            var nombre1 = parseFloat(document.getElementById("nombre1").value);
+            var nombre2 = parseFloat(document.getElementById("nombre2").value);
+            if (isNaN(nombre1) || isNaN(nombre2)) {
+                document.getElementById("resultat").textContent = "Veuillez saisir des nombres valides.";
+            } else {
+                var somme = addition(nombre1, nombre2);
+                document.getElementById("resultat").textContent = "La somme est : " + somme;
+            }
+        }
+        function addition(a, b) {
+            return a + b;
+        }
     </script>
 </body>
 </html>

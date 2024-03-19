@@ -1,41 +1,32 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prix TTC</title>
-    <style>
-        .red-text {
-            color: red;
-        }
-
-        .green-text {
-            color: green;
-        }
-    </style>
+    <title>Formulaire De contact</title>
 </head>
 <body>
+    <h5>Formulaire De contact</h5>
+    <label>Email:</label>
+    <input id="emailInput" type="email"><br><br>
+    <label>Objet:</label>
+    <input id="objetInput" type="text"><br><br>
+    <label>Corps:</label>
+    <textarea id="corpsInput" rows="4" cols="50"></textarea><br><br>
+    <button onclick="afficherEmail()">Envoyer l'email</button><br><br>
+    <p>Sender: <span id="sender"></span></p>
+    <p>Objet: <span id="objet"></span></p>
+    <p>Corps de l'email: <span id="corps"></span></p>
+
     <script>
-        var prixHT = prompt("Veuillez entrer le prix HT :");
-        if (isNaN(prixHT) || prixHT === null || prixHT === "") {
-            alert("Veuillez entrer un prix HT valide.");
-        } else {
-                prixHT = parseFloat(prixHT);
-            var tauxTVA = prompt("Veuillez entrer le taux de TVA en pourcentage :");
-            if (isNaN(tauxTVA) || tauxTVA === null || tauxTVA === "") {
-                alert("Veuillez entrer un taux de TVA valide.");
-            } else {
-                tauxTVA = parseFloat(tauxTVA) / 100;
-                var prixTTC = prixHT * (1 + tauxTVA);
-                var classeCSS ;
-                if(prixTTC>100){
-                    classeCSS='red-text';
-                }
-                else{
-                    classeCSS='green-text';
-                }
-                document.body.innerHTML = '<p style="color: ' + classeCSS + '">Le prix TTC (TVA ' + (tauxTVA * 100) + '%) est : ' + prixTTC.toFixed(2) + ' dhs</p>';
-            }
+        function afficherEmail() {
+            var email = document.getElementById("emailInput").value;
+            var objet = document.getElementById("objetInput").value;
+            var corps = document.getElementById("corpsInput").value;
+
+            document.getElementById("sender").innerText = email;
+            document.getElementById("objet").innerText = objet;
+            document.getElementById("corps").innerText = corps;
         }
     </script>
 </body>

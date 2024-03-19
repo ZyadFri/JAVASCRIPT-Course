@@ -1,19 +1,25 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prix TTC</title>
+    <title>Test de variables</title>
 </head>
 <body>
     <script>
-        var prixHT = prompt("Veuillez entrer le prix HT :");
-        prixHT = parseFloat(prixHT);
-        if (!isNaN(prixHT)) {
-            var prixTTC = prixHT * 1.20;
-            document.body.innerText = "Le prix TTC (TVA 20%) est : " + prixTTC.toFixed(2) + " dhs";
+        var variable1 = parseFloat(prompt("Veuillez saisir la première variable numérique :"));
+        var variable2 = parseFloat(prompt("Veuillez saisir la deuxième variable numérique :"));
+        var variable3 = parseFloat(prompt("Veuillez saisir la troisième variable numérique :"));
+        if (isNaN(variable1) || isNaN(variable2) || isNaN(variable3)) {
+            alert("Veuillez saisir des nombres valides.");
         } else {
-            document.body.innerText = "Le prix saisi n'est pas valide.";
+            if (variable1 === variable2 && variable2 === variable3) {
+                alert("Les trois variables sont identiques.");
+            } else if (variable1 === variable2 || variable1 === variable3 || variable2 === variable3) {
+                alert("Deux des variables sont de valeurs égales.");
+            } else {
+                alert("Les trois variables sont différentes.");
+            }
         }
     </script>
 </body>

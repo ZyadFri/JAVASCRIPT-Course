@@ -3,23 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prix TTC</title>
+    <title>Calcul du prix TTC</title>
 </head>
 <body>
     <script>
-        var prixHT = prompt("Veuillez entrer le prix HT :");
+        var prixHT = parseFloat(prompt("Veuillez saisir le prix hors taxes (HT) :"));
 
-        if (isNaN(prixHT) || prixHT === null || prixHT === "") {
-            alert("Veuillez entrer un prix HT valide.");
+        if (isNaN(prixHT) || prixHT <= 0) {
+            alert("Veuillez saisir un prix hors taxes (HT) valide.");
         } else {
-            prixHT = parseFloat(prixHT);
-            var tauxTVA = prompt("Veuillez entrer le taux de TVA en pourcentage :");
-            if (isNaN(tauxTVA) || tauxTVA === null || tauxTVA === "") {
-                alert("Veuillez entrer un taux de TVA valide.");
+            var tauxTVA = parseFloat(prompt("Veuillez saisir le taux de TVA en pourcentage (%):"));
+
+            if (isNaN(tauxTVA) || tauxTVA < 0) {
+                alert("Veuillez saisir un taux de TVA valide.");
             } else {
-                tauxTVA = parseFloat(tauxTVA) / 100;
-                var prixTTC = prixHT * (1 + tauxTVA);
-                document.body.innerText = "Le prix TTC (TVA " + (tauxTVA * 100) + "%) est : " + prixTTC.toFixed(3) + " dhs";
+                var prixTTC = prixHT * (1 + tauxTVA / 100);
+                document.body.innerText = "Le prix TTC est : " + prixTTC.toFixed(2) + " €";
             }
         }
     </script>

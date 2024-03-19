@@ -3,19 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Remplacement de contenu</title>
+    <title>Exercice 7</title>
+    <style>
+        #menu {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 120px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        #menu a {
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            color: black;
+        }
+
+        #menu a:hover {
+            background-color: #f1f1f1;
+        }
+    </style>
 </head>
 <body>
-    <h1>Mes <span>cocktails préférés</span></h1>
-    <p>Mojito</p>
-    <p>Gin Fizz</p>
-    <p>Bloody mary<p>
-    <p>Long Island Iced Tea</p>
-    <p>Mais si je ne devais qu'en retenir qu'un : <strong id="cocktail"></strong></p>
+    <a href="https://www.example.com" onclick="return stopRedirection()">Lien vers une page</a>
+    <div id="menuDiv" onclick="toggleMenu()">Cliquez ici pour afficher le menu</div>
+    <div id="menu">
+        <a href="#">Option 1</a>
+        <a href="#">Option 2</a>
+        <a href="#">Option 3</a>
+    </div>
 
     <script>
-        var cocktailElement = document.getElementById("cocktail");
-        cocktailElement.textContent = "Long Island Iced Tea";
+        function stopRedirection() {
+            alert("Redirection interdite");
+            return false; 
+        }
+        function toggleMenu() {
+            var menu = document.getElementById("menu");
+            if (menu.style.display === "none") {
+                menu.style.display = "block";
+            } else {
+                menu.style.display = "none";
+            }
+        }
+        document.getElementById("menuDiv").addEventListener("mouseleave", function() {
+            document.getElementById("menu").style.display = "none";
+        });
     </script>
 </body>
 </html>
